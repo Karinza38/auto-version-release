@@ -12,8 +12,8 @@ continuous-delivery-fallback-tag: ''
 branches:
   development:
     increment: Patch
-    # Everything except main and master
-    regex: ^(?!(main|master)$)
+    # Everything except main, master and hotfix
+    regex: ^(?!(main|master|(hotfix[/-].*))$)
     track-merge-target: true
     source-branches: []
   feature:
@@ -32,7 +32,9 @@ branches:
     regex: ^\b$
   hotfix:
     # Match nothing
-    regex: ^hotfix(es)?[/-]
+    increment: None
+    tag: hotfix
+    regex: ^hotfix[/-]
   support:
     # Match nothing
     regex: ^\b$
