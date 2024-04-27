@@ -21,6 +21,16 @@ jobs:
                 versionSpec: '0.17.x'
             - name: Execute GitVersion
               uses: gittools/actions/gitversion/execute@v1
+            - name: Create tag
+              uses: actions/github-script@v5
+              with:
+                script: |
+                  github.rest.git.createRef({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    ref: 'refs/tags/${{ env.semVer }}',
+                    sha: context.sha
+                  })
             - uses: gittools/actions/gitreleasemanager/publish@v1.1.1
               name: Publish release with GitReleaseManager
               with:
