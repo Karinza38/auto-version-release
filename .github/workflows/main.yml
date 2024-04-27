@@ -38,6 +38,6 @@ jobs:
               name: Publish release with GitReleaseManager
               with:
                 token: ${{ secrets.GITHUB_TOKEN }}
-                owner: ${{ github.repository_owner }}
-                repository: ${{ github.repository }}
+                owner: ${{ github.event.repository.owner }}
+                repository: ${{ github.event.repository.name }}
                 tagName: ${{ env.semVer }}
