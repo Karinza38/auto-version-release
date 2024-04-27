@@ -16,4 +16,4 @@ jobs:
               with:
                 versionSpec: '5.x'
             - name: Execute GitVersion
-              uses: gittools/actions/gitversion/execute@
+              uses: gittools/actions/gitversion/execute@v1
