@@ -1,0 +1,42 @@
+on:
+    push: 
+        branches: 
+            - hotfix/*
+
+permissions:
+    contents: write
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0  
+            - name: Install GitVersion
+              uses: gittools/actions/gitversion/setup@v1
+              with:
+                versionSpec: '5.x'
+            - name: Install GitReleaseManager
+              uses: gittools/actions/gitreleasemanager/setup@v1
+              with:
+                versionSpec: '0.17.x'
+            - name: Execute GitVersion
+              uses: gittools/actions/gitversion/execute@v1
+            - name: Create tag
+              uses: actions/github-script@v5
+              with:
+                script: |
+                  github.rest.git.createRef({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    ref: 'refs/tags/${{ env.semVer }}',
+                    sha: context.sha
+                  })
+            
+    deploy-to-prod:
+        runs-on: ubuntu-latest
+        environment: prod
+        steps:
+            - run: echo 'Deployed to PROD'

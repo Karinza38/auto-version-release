@@ -32,7 +32,7 @@ branches:
     regex: ^\b$
   hotfix:
     # Match nothing
-    regex: ^\b$
+    regex: ^hotfix(es)?[/-]
   support:
     # Match nothing
     regex: ^\b$
