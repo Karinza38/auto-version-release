@@ -15,5 +15,16 @@ jobs:
               uses: gittools/actions/gitversion/setup@v1
               with:
                 versionSpec: '5.x'
+            - name: Install GitReleaseManager
+              uses: gittools/actions/gitreleasemanager/setup@v1
+              with:
+                versionSpec: '0.17.x'
             - name: Execute GitVersion
               uses: gittools/actions/gitversion/execute@v1
+            - uses: gittools/actions/gitreleasemanager/publish@v1.1.1
+              name: Publish release with GitReleaseManager
+              with:
+                token: ${{ secrets.GITHUB_TOKEN }}
+                owner: ${{ github.repository_owner }}
+                repository: ${{ github.repository }}
+                tagName: ${{ env.semVer }}
