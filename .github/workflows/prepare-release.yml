@@ -26,15 +26,7 @@ jobs:
             - name: Execute GitVersion
               uses: gittools/actions/gitversion/execute@v1
             - name: Create tag
-              uses: actions/github-script@v5
-              with:
-                script: |
-                  github.rest.git.createRef({
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    ref: 'refs/tags/${{ env.semVer }}',
-                    sha: context.sha
-                  })
+              run: git tag ${{ env.semVer }}
             - name: Release
               uses: softprops/action-gh-release@v2
 
