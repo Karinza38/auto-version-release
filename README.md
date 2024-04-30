@@ -5,4 +5,4 @@ New feature fix
 New feature
 New feature fix
 Feature fix
-MAJOR
+MAJOR fix
