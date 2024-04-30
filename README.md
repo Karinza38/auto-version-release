@@ -6,3 +6,4 @@ New feature
 New feature fix
 Feature fix
 MAJOR fix
+feature
