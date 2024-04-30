@@ -2,4 +2,8 @@
 Make a release
 Hotfix of hotfix
 New feature fix
-New feature some fix
+New feature
+New feature fix
+Feature fix
+MAJOR fix
+feature some fix
