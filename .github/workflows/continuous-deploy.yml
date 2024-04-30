@@ -26,17 +26,3 @@ jobs:
         environment: prod
         steps:
             - run: echo 'Deployed to PROD'
-
-    hotfix-deploy-to-npd:
-        if: ${{ contains( github.event.release.tag_name, 'hotfix') }}
-        runs-on: ubuntu-latest
-        environment: npd
-        steps:
-            - run: echo 'Deployed to PROD'
-    
-    hotfix-deploy-to-prod:
-        if: ${{ contains( github.event.release.tag_name, 'hotfix') }}
-        runs-on: ubuntu-latest
-        environment: prod
-        steps:
-            - run: echo 'Deployed to PROD'

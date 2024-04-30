@@ -1,0 +1,14 @@
+on:
+    workflow_dispatch: 
+        inputs:
+            environment:
+                description: Environment where this version is going to be deployed
+                type: environment
+                required: true
+
+jobs:
+    deploy-to-dev:
+        runs-on: ubuntu-latest
+        environment: ${{ inputs.environment }}
+        steps:
+            - run: echo 'Deployed to ${{ inputs.environment }}'
