@@ -19,10 +19,6 @@ jobs:
               uses: gittools/actions/gitversion/setup@v1
               with:
                 versionSpec: '5.x'
-            - name: Install GitReleaseManager
-              uses: gittools/actions/gitreleasemanager/setup@v1
-              with:
-                versionSpec: '0.17.x'
             - name: Execute GitVersion
               if: ${{ !contains(github.event.ref, 'hotfix') }}
               uses: gittools/actions/gitversion/execute@v1
@@ -39,3 +35,5 @@ jobs:
               with:
                 tag_name: ${{ env.semVer }}
                 token: ${{ secrets.RELEASE_TOKEN }}
+                generate_release_notes: true
+                
