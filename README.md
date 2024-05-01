@@ -23,3 +23,5 @@ The flow would be the following:
 * `continuous-deploy` does not run any job for the hotfix scenario
 * `prepare-release` ensures that for the hotfix scenario, GitVersion ignores the commit messages and does not bump the version (so that it just sufixes the version with `-hotfix`)
 * `prepare-release` creates a PR from the hotfix branch to main, to ensure that there's no regression. We know that this PR might not be needed (e.g: bug doesn't happen in main) or can't be merged, in those cases, it should simply be closed, the hotfix branch can be deleted, and any other appropriate actions should be taken.
+
+Test hotfix
