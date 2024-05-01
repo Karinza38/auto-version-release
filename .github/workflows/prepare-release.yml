@@ -36,4 +36,9 @@ jobs:
                 tag_name: ${{ env.semVer }}
                 token: ${{ secrets.RELEASE_TOKEN }}
                 generate_release_notes: true
+            - name: Create PR from hotfix to main
+              if: ${{ contains(github.event.ref, 'hotfix') }}
+              run: gh pr create -B main -H ${{ github.event.ref }} --title 'Merge ${{ github.event.ref }} into main' --body 'This PR is created to ensure we do not have regression of the bug fixed by this hotfix. Please analyse if this still applies to main, if it can be merged or if any other actions should be taken. Thanks'
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 
