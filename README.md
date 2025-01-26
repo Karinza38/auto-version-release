@@ -1,4 +1,4 @@
-# auto-version-release
+ # auto-version-release
 Proof of concept to test the ability to automate deployments to multiple environments with automated versioning based semantic versioning controlled via conventional commits, when using trunk-based-development.
 
 ## Tools used:
